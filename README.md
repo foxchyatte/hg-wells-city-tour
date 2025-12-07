@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The Wellsian Journey - Bike Tour Website
+
+A classic, adventure-themed website for a literary bicycle tour inspired by H.G. Wells' works. Features an interactive map with location pins and audio narratives with transcripts.
+
+## Features
+
+- **Classic HG Wells Theme**: Steampunk-inspired design with warm earth tones, brass accents, and vintage typography
+- **Interactive Map**: Leaflet-powered map with custom-styled location pins
+  - Hover over pins to see location information
+  - Click pins to smoothly scroll to corresponding audio sections
+- **Audio Narratives**: Each location includes:
+  - Custom audio player with play/pause controls
+  - Progress bar with time tracking
+  - Full transcript display
+- **Responsive Design**: Works beautifully on desktop and mobile devices
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+ and npm
+
+### Installation
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Adding Audio Files
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Place your audio files in the `public/audio/` directory and update the `audioUrl` paths in `lib/locations.ts` to match your file names.
 
-## Learn More
+Example:
+- `public/audio/location-1.mp3`
+- `public/audio/location-2.mp3`
+- etc.
 
-To learn more about Next.js, take a look at the following resources:
+### Customizing Locations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Edit `lib/locations.ts` to add, remove, or modify tour locations. Each location includes:
+- `id`: Unique identifier
+- `name`: Display name
+- `description`: Short description shown in map popup
+- `coordinates`: [latitude, longitude] array
+- `audioUrl`: Path to audio file
+- `transcript`: Full text transcript
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
 
-## Deploy on Vercel
+```
+bike-tour-website/
+├── app/
+│   ├── layout.tsx       # Root layout with fonts
+│   ├── page.tsx         # Main page component
+│   └── globals.css      # Global styles and theme
+├── components/
+│   ├── Header.tsx       # Site header component
+│   ├── TourMap.tsx      # Interactive map component
+│   └── AudioSection.tsx # Audio player with transcript
+├── lib/
+│   └── locations.ts     # Location data and types
+└── public/
+    └── audio/           # Audio files directory
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Design Theme
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The website features a classic, adventure-themed aesthetic inspired by H.G. Wells:
+
+- **Colors**: Warm amber tones, deep browns, brass accents
+- **Typography**: Playfair Display (serif) for headings, Inter (sans-serif) for body
+- **Style**: Vintage literary feel with subtle textures and shadows
+
+## Technologies
+
+- **Next.js 16**: React framework
+- **TypeScript**: Type safety
+- **Tailwind CSS 4**: Styling
+- **React Leaflet**: Map integration
+- **Lucide React**: Icons
+
+## Build
+
+```bash
+npm run build
+npm start
+```
+
+## License
+
+MIT
